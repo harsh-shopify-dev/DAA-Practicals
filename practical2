@@ -1,0 +1,32 @@
+import time
+
+def l_search(a, x):
+    for i in range(len(a)):
+        if a[i] == x:
+            return i
+    return -1
+
+def b_search(a, x):
+    l = 0
+    r = len(a) - 1
+    while l <= r:
+        m = (l + r) // 2
+        if a[m] == x:
+            return m
+        elif a[m] < x:
+            l = m + 1
+        else:
+            r = m - 1
+    return -1
+
+# Array must be sorted for binary search
+d = [11, 12, 22, 25, 34, 64, 90]
+tgt = 34
+
+t1 = time.time()
+res1 = l_search(d, tgt)
+print("Linear Search:", res1, "Time:", time.time() - t1)
+
+t2 = time.time()
+res2 = b_search(d, tgt)
+print("Binary Search:", res2, "Time:", time.time() - t2)
